@@ -1,0 +1,130 @@
+body {
+    background-color: #fafafa;
+    font-family: sans-serif;
+}
+
+.nav-top {
+    position: fixed; /* Fixar a barra no topo */
+    top: 0;          /* Posição superior: 0 */
+    left: 0;         /* Posição esquerda: 0 */
+    width: 100%;
+    height: 50px; /* Reduced header height to 50px */
+    background-color: #3B8B66;
+    border-top: 0.5px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 0 5%;
+    max-width: 1320px;
+    margin: auto; /* Centralizar automaticamente */
+}
+  
+.navbar-brand img {
+    max-width: 100px;
+    max-height: 60px;
+}
+  
+.nav-clik {
+    display: flex; /* Tornar elementos filhos em linha */
+    justify-content: center;
+    color: #dbdbdb;
+    list-style: none; /* Remove default list styling */
+    margin: 0; /* Remove default margins */
+    padding: 0; /* Remove default padding */
+}
+  
+.nav-clik li {
+    margin-right: 1rem; /* Add spacing between navigation links */
+}
+  
+.nav-clik a {
+    text-decoration: none; /* Remove default underline from links */
+    color: inherit; /* Inherit color from parent element */
+    padding: 0.5rem 1rem; /* Add some padding for clickable area */
+}
+
+.nav-links a:hover {
+    background-color: #A9DE91; /* Subtle hover effect */
+}
+
+.slogan {
+    background-color: #A9DE91;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffff;
+    font-size: 2rem;
+    padding: 1rem;
+    border-bottom: 1.5px solid #dbdbdb;
+}
+  
+.into {
+    background-image: url(imagens/Imagem\ de\ fundo.jpeg);
+    background-size: cover; /* Ajusta a imagem para cobrir o container */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    background-position: center; /* Posiciona a imagem no centro */
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffff;
+    font-size: 1.8rem;
+    padding: 5%;
+
+}
+
+.btn {
+    background-color: #A9DE91 !important;
+    color: #3B8B66 !important;
+    padding: 8px 15px !important;
+    border: none !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+    margin-top: 20px !important;
+    font-size: 20px !important;
+    
+}
+  
+.btn:hover {
+    background-color: #7ed456 !important;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) 
+{
+  /* Adjust styles for smaller screens */
+  .navbar-brand img {
+    max-width: 80px;
+    max-height: 50px;
+  }
+
+  .slogan h1 {
+    font-size: 1.5rem;
+  }
+
+  .into p {
+    font-size: 1.3rem;
+  }
+}
+
+.sobre h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #3B8B66;
+    font-size: 2rem;
+    padding: 1rem;
+    border-bottom: 1px solid #3B8B66;
+}
+
+.sobre p {
+    margin-top: 30px;
+}
+
+.sobre {
+    color: #3B8B66;
+    font-size: 2rem;
+    padding: 1rem;
+}
+
