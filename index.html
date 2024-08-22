@@ -3,61 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>RecCicla</title>
-
     <link rel="stylesheet" href="styles.css">
-<!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Adicionando Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <!-- Adicionando Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js" defer></script>
 
 </head>
-
 <body class="body">
-    <!-- nav-->
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light nav-top">
-          <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="#">
+    <!-- Navbar -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light nav-top">
+      <div class="container-fluid nav-container">
+          <a class="navbar-brand" href="index.html">
               <img src="imagens/rec.png" alt="RecCicla Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="nav-clik navbar-nav ms-auto"> <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contatos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Cadastre-se</a>
-                </li>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-auto nav-clik">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="contatos.html">Contatos</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="cadastro.html">Cadastre-se</a>
+                  </li>
               </ul>
-            </div>
           </div>
-        </nav>
-      </header>
+      </div>
+  </nav>
+</header>
 
+    <!-- Main Content -->
     <section>
         <div class="container">
-          <div class="row slogan">
-            <h1>Sustentabilidade que compensa!</h1>
-          </div>
-          <div class="row into">
-            <p>Cansado de presenciar o descarte incorreto do lixo que prejudica o meio ambiente e gera diversos problemas?</p>
-            <p>Já pensou em recompensas por contribuir para um futuro mais verde?</p>
-            <p>A RecCicla chegou para revolucionar a forma como lidamos com nossos resíduos!</p>
-            <button type="button" class="btn btn-primary">Cadastre-se</button>
-          </div>
-          <div class="row sobre">
-            <h2> Um futuro mais verde para o Recife</h2>
-            <p> O descarte incorreto de resíduos sólidos continua sendo um dos principais desafios para o meio ambiente. Segundo dados do IBGE, cerca de 180 mil toneladas de lixo são coletadas diariamente no Brasil, um volume alarmante que, se não for gerenciado de forma adequada, pode gerar graves impactos ambientais. <br>
-              <br>
-              Materiais que, se separados e reciclados corretamente, poderiam ser reutilizados na produção de novos produtos ou como fonte de energia, acabam se acumulando em aterros sanitários, poluindo o solo e os lençóis freáticos, além de contribuir para o aumento do efeito estufa.</p>
-          </div>
+            <!-- Slogan Section -->
+            <div class="row slogan">
+                <h1>Sustentabilidade que compensa!</h1>
+            </div>
+            <!-- Introduction Section -->
+            <div class="row into">
+                <p>Cansado de presenciar o descarte incorreto do lixo que prejudica o meio ambiente e gera diversos problemas?</p>
+                <p>Já pensou em recompensas por contribuir para um futuro mais verde?</p>
+                <p>A RecCicla chegou para revolucionar a forma como lidamos com nossos resíduos!</p>
+                <button type="button" class="btn btn-primary">Cadastre-se</button>
+            </div>
+            <!-- About Section -->
+            <div class="row sobre">
+                <h2> Um futuro mais verde para o Recife</h2>
+                <p> O descarte incorreto de resíduos sólidos continua sendo um dos principais desafios para o meio ambiente. Segundo dados do IBGE, cerca de 180 mil toneladas de lixo são coletadas diariamente no Brasil, um volume alarmante que, se não for gerenciado de forma adequada, pode gerar graves impactos ambientais. <br>
+                    <br>
+                    Materiais que, se separados e reciclados corretamente, poderiam ser reutilizados na produção de novos produtos ou como fonte de energia, acabam se acumulando em aterros sanitários, poluindo o solo e os lençóis freáticos, além de contribuir para o aumento do efeito estufa.</p>
+            </div>
+            <!-- Benefits Section -->
+            <div class="row sobre">
+                <h2>Benefícios que fazem a diferença</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <h3>Descontos em produtos e serviços</h3>
+                        <p>Descarte corretamente e ganhe pontos para trocar por benefícios</p>
+                    </div>
+                    <div class="card">
+                        <h3>Descarte responsável</h3>
+                        <p>Reduza o impacto ambiental do descarte incorreto do lixo</p>
+                    </div>
+                    <div class="card">
+                        <h3>Gere emprego e renda</h3>
+                        <p> Crie novas oportunidades de trabalho na área da coleta seletiva.</p>
+                    </div>
+                    <button type="button" class="btn btn-primary">Cadastre-se</button>
+                </div>
+            </div>
         </div>
-      </section>
+        <div class="row mt-5">
+          <h2 class="text-center">Pontos de Coleta de Recicláveis em Recife</h2>
+          <!-- Mapa -->
+          <div id="map" style="height: 500px; width: 100%;"></div>
+      </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXlJj/kNVv9K+hZPiE7Pi6M5Nw4wl4/iyuHWxa1syQXBBgAhtd5y5F5FwQHb" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pzjw8f+ua7Kw1TIqzF8FYQUw2QvZlRB7pLd/1Dg8WP/8kslZ5FBDhc8r8d2KI36F" crossorigin="anonymous"></script>
 </body>
 </html>
