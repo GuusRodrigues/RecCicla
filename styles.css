@@ -1,4 +1,4 @@
-/* Global Styles */
+/* Global */
 body {
     background-color: #fafafa;
     font-family: sans-serif;
@@ -6,7 +6,7 @@ body {
     padding: 0;
 }
 
-/* Navbar Styles */
+/* Navbar */
 .nav-top {
     position: fixed;
     top: 0;
@@ -48,7 +48,7 @@ body {
     border-radius: 5px;
 }
 
-/* Slogan Styles */
+/* Slogan */
 .slogan {
     background-color: #A9DE91;
     height: 100px;
@@ -63,7 +63,7 @@ body {
     margin-top: 65px;
 }
 
-/* Introduction Section Styles */
+/* Indrodução */
 .into {
     background-image: url(imagens/Imagem\ de\ fundo.jpeg);
     background-size: cover;
@@ -80,7 +80,7 @@ body {
     text-align: center;
 }
 
-/* Button Styles */
+/* Button */
 .btn {
     background-color: #A9DE91 !important;
     color: #3B8B66 !important;
@@ -96,7 +96,7 @@ body {
     background-color: #7ed456 !important;
 }
 
-/* About Section Styles */
+/* Sobre */
 .sobre {
     color: #3B8B66;
     font-size: 1.5rem;
@@ -111,7 +111,7 @@ body {
     border-bottom: 1px solid #3B8B66;
 }
 
-/* Card Styles */
+/* Card */
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -150,24 +150,21 @@ body {
         max-height: 50px;
     }
 
-    /* Slogan adjustments */
     .slogan h1 {
         font-size: 1.5rem;
     }
 
-    /* Introduction text adjustments */
     .into p {
         font-size: 1.3rem;
     }
 
-    /* Cards adjustments */
     .card {
         width: calc(50% - 20px);
     }
 }
 
 @media (max-width: 576px) {
-    /* Further cards adjustments for small screens */
+    /* Para telas pequenas */
     .card {
         width: 100%;
     }
@@ -178,4 +175,21 @@ body {
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.footer {
+    background-color: #3B8B66;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer p {
+    margin: 0;
 }
