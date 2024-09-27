@@ -5,9 +5,14 @@ const CACHE_NAME = 'v1_cache';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/cadastro.html',
+  '/contatos.html',
   '/styles.css',
   '/script.js',
-  '/icons/rec.png',
+  '/manifest.json',
+  '/Front-end/icons/rec.png',
+  '/Front-end/IMG/Imagem de fundo.jpeg',
+  '/Front-end/IMG/rec.png',
 ];
 
 // Instalação do Service Worker
