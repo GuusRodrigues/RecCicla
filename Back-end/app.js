@@ -8,7 +8,6 @@ const swaggerSetup = require('./docs/swagger');
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const reciclagemRoutes = require('./routes/ReciclagemRoutes');
-const inspecaoRoutes = require('./routes/inspecaoRoutes');
 
 // Carregar variáveis de ambiente do arquivo .env
 dotenv.config();
@@ -38,12 +37,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/reciclagem', reciclagemRoutes);
-app.use('/api/inspecoes', inspecaoRoutes);
 
 // Configuração do Swagger
 swaggerSetup(app);
 // http://localhost:3000/api-docs
-
 
 // Configuração da Porta
 const PORT = process.env.PORT || 3000;
