@@ -1,65 +1,44 @@
-// URL do backend
-const backendUrl = 'http://localhost:3000/api';
-
-// Função de login
-document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    try {
-        const response = await fetch(`${backendUrl}/auth/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ username, password }),
+document.addEventListener('DOMContentLoaded', function() {
+    // Example form submission handling for Contatos page
+    const contactForm = document.getElementById('contactForm');
+    console.log('contactForm:', contactForm); // Para depuração
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Sua mensagem foi enviada com sucesso!');
+            this.reset();
         });
-
-        const data = await response.json();
-        if (response.ok) {
-            // Armazenar o token no localStorage
-            localStorage.setItem('token', data.token);
-            window.location.href = 'home.html'; // Redirecionar para a home
-        } else {
-            document.getElementById('errorMessage').innerText = data.message;
-        }
-    } catch (error) {
-        console.error('Erro:', error);
     }
+
+    // Example form submission handling for Cadastro page
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem.');
+            } else {
+                alert('Cadastro realizado com sucesso!');
+                this.reset();
+            }
+        });
+    }
+
 });
 
-// Função para verificar autenticação na home
-window.addEventListener('DOMContentLoaded', async () => {
-    if (window.location.pathname.includes('home.html')) {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            window.location.href = 'index.html';
-        }
-
-        // Carregar Recicalgens
-        try {
-            const response = await fetch(`${backendUrl}/reciclagens`, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+// Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/Front-end/service-worker.js')
+            .then(function(registration) {
+                console.log('Service Worker registrado com sucesso:', registration);
+            })
+            .catch(function(error) {
+                console.log('Falha ao registrar o Service Worker:', error);
             });
-
-            if (response.ok) {
-                const reciclagens = await response.json();
-                const reciclagensList = document.getElementById('reciclagensList');
-                reciclagensList.innerHTML = reciclagens.map(p => `<div>${p.nome}</div>`).join('');
-            } else {
-                window.location.href = 'index.html';
-            }
-        } catch (error) {
-            console.error('Erro ao carregar reciclagens:', error);
-        }
-
-        // Logout
-        document.getElementById('logoutButton').addEventListener('click', () => {
-            localStorage.removeItem('token');
-            window.location.href = 'index.html';
-        });
-    }
-}); 
+    });
+}

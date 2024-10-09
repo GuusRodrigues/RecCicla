@@ -23,24 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicializando o mapa
-    const map = L.map('map').setView([-8.0476, -34.8770], 13); // Coordinates for Recife
-
-    // Add a tile layer to the map
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Example marker (you can replace with real locations)
-    L.marker([-8.0476, -34.8770]).addTo(map)
-        .bindPopup('Ponto de Coleta 1')
-        .openPopup();
-});
-
 //service worker
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('/Front-end/service-worker.js')
       .then(function(registration) {
         console.log('Service Worker registrado com sucesso:', registration);
       })

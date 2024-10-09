@@ -4,15 +4,17 @@ const CACHE_NAME = 'v1_cache';
 // Arquivos a serem armazenados no cache
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/cadastro.html',
-  '/contatos.html',
-  '/styles.css',
-  '/script.js',
-  '/manifest.json',
+  '/Front-end/index.html',
+  '/Front-end/cadastro.html',
+  '/Front-end/contatos.html',
+  '/Front-end/styles.css',
+  '/Front-end/script.js',
+  '/Front-end/manifest.json',
   '/Front-end/icons/rec.png',
   '/Front-end/IMG/Imagem de fundo.jpeg',
   '/Front-end/IMG/rec.png',
+  '/Front-end/home.html',
+
 ];
 
 // Instalação do Service Worker
