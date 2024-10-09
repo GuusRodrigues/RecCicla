@@ -5,7 +5,6 @@ const CACHE_NAME = 'v1_cache';
 const urlsToCache = [
   '/',
   '/Front-end/index.html',
-  '/Front-end/cadastro.html',
   '/Front-end/contatos.html',
   '/Front-end/styles.css',
   '/Front-end/app.js',
@@ -13,7 +12,8 @@ const urlsToCache = [
   '/Front-end/icons/rec.png',
   '/Front-end/IMG/Imagem de fundo.jpeg',
   '/Front-end/IMG/rec.png',
-  '/Front-end/home.html',
+  '/Front-end/reciclagens.html',
+  '/Front-end/script.js',
 
 ];
 

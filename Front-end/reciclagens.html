@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecCicla - Login</title>
+    <title>Centros de Reciclagem</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <!-- Navbar -->
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-light nav-top">
             <div class="container-fluid nav-container">
@@ -24,38 +25,48 @@
                             <a class="nav-link" href="index.html">Página Principal</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contatos.html">Contatos</a>
+                            <a class="nav-link" href="reciclagens.html">Centro de Reciclagens</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="cadastro.html">Cadastre-se</a>
+                            <a class="nav-link active" href="contatos.html">Contatos</a>
+                        </li>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-    <!-- Login -->
+    
     <section class="container mt-5">
-        <h2 class="text-center">Faça o seu Login</h2>
+        <h2 class="text-center">Meus Centros de Reciclagem</h2>
+        <p class="text-center">Gerencie seus centros de reciclagem abaixo. Adicione novos centros com nome, descrição e localização.</p>
         <div class="row justify-content-center">
             <div class="col-md-8">
-                
-                <form id="loginForm">
+                <form id="reciclagem-form">
                     <div class="mb-3">
-                        <label for="username" class="form-label">Usuário</label>
-                        <input type="text" class="form-control" id="username" required>
+                        <label for="name" class="form-label">Nome do Centro de Reciclagem</label>
+                        <input type="text" class="form-control" id="name" placeholder="Nome do Centro de Reciclagem" required>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="password" required>
+                        <label for="description" class="form-label">Descrição</label>
+                        <input type="text" class="form-control" id="description" placeholder="Descrição" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <div class="mb-3">
+                        <label for="localizacao" class="form-label">Localização</label>
+                        <input type="text" class="form-control" id="localizacao" placeholder="Localização" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
                 </form>
-                <p id="errorMessage" class="error-message"></p>
             </div>
         </div>
-    </section>
+    
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <h3>Centros de Reciclagem</h3>
+                <div id="ReciclagemList"></div>
+            </div>
+        </div>
+    </section>    
 
     <footer class="footer bg-dark text-white text-center py-3">
         <p>&copy; 2024 RecCicla. Todos os direitos reservados.</p>
@@ -66,6 +77,6 @@
         <a href="" class="text-white">Instagram</a>
     </footer>
     
-    <script src="/Front-end/app.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
