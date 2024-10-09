@@ -8,7 +8,7 @@ const urlsToCache = [
   '/Front-end/cadastro.html',
   '/Front-end/contatos.html',
   '/Front-end/styles.css',
-  '/Front-end/script.js',
+  '/Front-end/app.js',
   '/Front-end/manifest.json',
   '/Front-end/icons/rec.png',
   '/Front-end/IMG/Imagem de fundo.jpeg',
