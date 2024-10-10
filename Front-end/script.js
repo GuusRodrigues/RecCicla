@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-const apiUrl = 'https://sua-api.com/reciclagens'; // URL da sua API
 
 // Carregar os centros de reciclagem quando a página for carregada
 document.addEventListener('DOMContentLoaded', () => {
@@ -63,7 +62,7 @@ reciclagemForm.addEventListener('submit', async (e) => {
 // Carregar todos os centros de reciclagem
 async function loadReciclagens() {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(backendUrl );
     const reciclagens = await response.json();
     displayReciclagens(reciclagens);
   } catch (error) {
@@ -94,7 +93,7 @@ function displayReciclagens(reciclagens) {
 
 // Criar um novo centro de reciclagem
 async function createReciclagem(reciclagemData) {
-  const response = await fetch(apiUrl, {
+  const response = await fetch(backendUrl , {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -109,7 +108,7 @@ async function createReciclagem(reciclagemData) {
 // Deletar um centro de reciclagem
 async function deleteReciclagem(id) {
   try {
-    await fetch(`${apiUrl}/${id}`, {
+    await fetch(`${backendUrl }/${id}`, {
       method: 'DELETE',
     });
     loadReciclagens(); // Recarregar a lista após deletar
@@ -132,7 +131,7 @@ async function editReciclagem(id) {
   const reciclagemData = { name, description, localizacao };
 
   try {
-    await fetch(`${apiUrl}/${id}`, {
+    await fetch(`${backendUrl }/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
