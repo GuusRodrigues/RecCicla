@@ -1,19 +1,20 @@
-// URL do backend
-const backendUrl = 'http://localhost:3000/api';
+// URLs do backend 
+const apiReciclagem = 'http://localhost:3000/api/reciclagem';
+const apiContato = 'http://localhost:3000/api/contato';
 
 document.addEventListener('DOMContentLoaded', () => {
     // Verificar se o elemento com id 'map' existe na página
     const mapElement = document.getElementById('map');
     if (mapElement) {
         // Inicializando o mapa
-        const map = L.map('map').setView([-8.0476, -34.8770], 13); // Coordinates for Recife
+        const map = L.map('map').setView([-8.0476, -34.8770], 13); // Coordenadas de Recife
 
-        // Add a tile layer to the map
+        // Adicionar camada de tiles ao mapa
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        // Example marker (you can replace with real locations)
+        // Exemplo de marcador (substitua com localizações reais)
         L.marker([-8.0476, -34.8770]).addTo(map)
             .bindPopup('Ponto de Coleta 1')
             .openPopup();
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Example form submission handling for Contatos page
+    // Verificar se o formulário de contato existe na página
     const contactForm = document.getElementById('contactForm');
     console.log('contactForm:', contactForm); // Para depuração
     if (contactForm) {
@@ -31,16 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
-
 });
-
 
 // Carregar os centros de reciclagem quando a página for carregada
 document.addEventListener('DOMContentLoaded', () => {
   loadReciclagens();
 });
 
-// Adicionar evento de submit ao formulário
+// Adicionar evento de submit ao formulário de reciclagem
 const reciclagemForm = document.getElementById('reciclagem-form');
 reciclagemForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -62,7 +61,7 @@ reciclagemForm.addEventListener('submit', async (e) => {
 // Carregar todos os centros de reciclagem
 async function loadReciclagens() {
   try {
-    const response = await fetch(backendUrl );
+    const response = await fetch(apiReciclagem);
     const reciclagens = await response.json();
     displayReciclagens(reciclagens);
   } catch (error) {
@@ -93,7 +92,7 @@ function displayReciclagens(reciclagens) {
 
 // Criar um novo centro de reciclagem
 async function createReciclagem(reciclagemData) {
-  const response = await fetch(backendUrl , {
+  const response = await fetch(apiReciclagem, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -108,7 +107,7 @@ async function createReciclagem(reciclagemData) {
 // Deletar um centro de reciclagem
 async function deleteReciclagem(id) {
   try {
-    await fetch(`${backendUrl }/${id}`, {
+    await fetch(`${apiReciclagem}/${id}`, {
       method: 'DELETE',
     });
     loadReciclagens(); // Recarregar a lista após deletar
@@ -131,7 +130,7 @@ async function editReciclagem(id) {
   const reciclagemData = { name, description, localizacao };
 
   try {
-    await fetch(`${backendUrl }/${id}`, {
+    await fetch(`${apiReciclagem}/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -144,7 +143,7 @@ async function editReciclagem(id) {
   }
 }
 
-
+// Enviar formulário de contato
 document.getElementById('contactForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -156,7 +155,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
     };
 
     try {
-        const response = await fetch('/api/contacts', {
+        const response = await fetch(apiContato, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
