@@ -34,3 +34,144 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+const apiUrl = 'https://sua-api.com/reciclagens'; // URL da sua API
+
+// Carregar os centros de reciclagem quando a página for carregada
+document.addEventListener('DOMContentLoaded', () => {
+  loadReciclagens();
+});
+
+// Adicionar evento de submit ao formulário
+const reciclagemForm = document.getElementById('reciclagem-form');
+reciclagemForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const description = document.getElementById('description').value;
+  const localizacao = document.getElementById('localizacao').value;
+
+  const reciclagemData = { name, description, localizacao };
+
+  try {
+    await createReciclagem(reciclagemData);
+    reciclagemForm.reset();
+    loadReciclagens(); // Recarregar a lista após adicionar
+  } catch (error) {
+    console.error('Erro ao adicionar centro de reciclagem:', error);
+  }
+});
+
+// Carregar todos os centros de reciclagem
+async function loadReciclagens() {
+  try {
+    const response = await fetch(apiUrl);
+    const reciclagens = await response.json();
+    displayReciclagens(reciclagens);
+  } catch (error) {
+    console.error('Erro ao carregar centros de reciclagem:', error);
+  }
+}
+
+// Exibir os centros de reciclagem na página
+function displayReciclagens(reciclagens) {
+  const reciclagemList = document.getElementById('ReciclagemList');
+  reciclagemList.innerHTML = '';
+
+  reciclagens.forEach((reciclagem) => {
+    const reciclagemItem = document.createElement('div');
+    reciclagemItem.className = 'card mb-3';
+    reciclagemItem.innerHTML = `
+      <div class="card-body">
+        <h5 class="card-title">${reciclagem.name}</h5>
+        <p class="card-text">${reciclagem.description}</p>
+        <p class="card-text"><small class="text-muted">Localização: ${reciclagem.localizacao}</small></p>
+        <button class="btn btn-primary btn-sm" onclick="editReciclagem('${reciclagem._id}')">Editar</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteReciclagem('${reciclagem._id}')">Deletar</button>
+      </div>
+    `;
+    reciclagemList.appendChild(reciclagemItem);
+  });
+}
+
+// Criar um novo centro de reciclagem
+async function createReciclagem(reciclagemData) {
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(reciclagemData),
+  });
+  if (!response.ok) {
+    throw new Error('Erro ao criar centro de reciclagem');
+  }
+}
+
+// Deletar um centro de reciclagem
+async function deleteReciclagem(id) {
+  try {
+    await fetch(`${apiUrl}/${id}`, {
+      method: 'DELETE',
+    });
+    loadReciclagens(); // Recarregar a lista após deletar
+  } catch (error) {
+    console.error('Erro ao deletar centro de reciclagem:', error);
+  }
+}
+
+// Editar um centro de reciclagem
+async function editReciclagem(id) {
+  const name = prompt('Digite o novo nome do centro de reciclagem:');
+  const description = prompt('Digite a nova descrição:');
+  const localizacao = prompt('Digite a nova localização:');
+
+  if (!name || !description || !localizacao) {
+    alert('Todos os campos são obrigatórios!');
+    return;
+  }
+
+  const reciclagemData = { name, description, localizacao };
+
+  try {
+    await fetch(`${apiUrl}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reciclagemData),
+    });
+    loadReciclagens(); // Recarregar a lista após editar
+  } catch (error) {
+    console.error('Erro ao editar centro de reciclagem:', error);
+  }
+}
+
+
+document.getElementById('contactForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const contactData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    try {
+        const response = await fetch('/api/contacts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contactData)
+        });
+
+        if (response.ok) {
+            alert('Mensagem enviada com sucesso!');
+            document.getElementById('contactForm').reset();
+        } else {
+            alert('Erro ao enviar a mensagem.');
+        }
+    } catch (error) {
+        console.error('Erro ao enviar a mensagem:', error);
+    }
+});
